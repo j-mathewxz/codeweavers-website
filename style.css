@@ -1,6 +1,6 @@
 /* Basic styling for the body */
 body {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5; /* Light grey background for better contrast */
@@ -11,12 +11,12 @@ body {
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 20px 0; /* Adjust padding for better spacing */
     text-align: center;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
@@ -24,7 +24,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px; /* Adjust margin for better spacing */
 }
 
 nav ul li a {
@@ -56,70 +56,6 @@ section p, section form {
     margin-bottom: 20px;
 }
 
-section img {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-/* Styling for the table */
-table {
-    width: 100%;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-/* Styling for the car grid */
-.car-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.car-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(33.333% - 40px);
-    box-sizing: border-box;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.car-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.car-card h3 {
-    margin: 15px 0 10px;
-    color: #333;
-}
-
-.car-card p {
-    margin: 5px 0;
-    color: #666;
-}
-
 /* Styling for buttons and links */
 .button, .car-card a {
     display: inline-block;
@@ -127,50 +63,30 @@ th {
     margin: 10px 0;
     text-align: center;
     text-decoration: none;
-    color: #333;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .button:hover, .car-card a:hover {
-    background-color: #d5d5d5;
-    color: #000;
+    background-color: #0056b3;
 }
 
 form button {
-    width: auto;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    color: #333;
-    padding: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
 
 form button:hover {
-    background-color: #d5d5d5;
-    color: #000;
-}
-
-/* Styling for the contact form */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-bottom: 5px;
-}
-
-form input, form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
+    background-color: #0056b3;
 }
 
 /* Styling for the footer */
@@ -195,4 +111,78 @@ footer a {
 
 footer a:hover {
     color: #ddd;
+}
+
+.car-scroll {
+    height: 400px; /* Adjust the height as needed */
+    overflow: auto;
+}
+
+
+.contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.car-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.car-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.car-card p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.car-card a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.car-card a:hover {
+    background-color: #0056b3;
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #guessResult {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the number game :) </h1>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="text" id="guessField">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p id="guessResult"></p>
+    </div>
+
+    <script>
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let guesses = 0;
+
+        function checkGuess() {
+    const userGuess = parseInt(document.getElementById('guessField').value);
+    const result = document.getElementById('guessResult');
+
+    if (isNaN(userGuess)) {
+        result.textContent = 'please enter a valid number.';
+        return;
+    }
+
+    guesses++;
+
+    if (userGuess === randomNumber) {
+        const timestamp = new Date().toLocaleString(); // Get current timestamp
+        result.textContent = `Congratulations! You guessed the correct number ${randomNumber} in ${guesses} guesses. Completed at: ${timestamp}`;
+        document.getElementById('guessField').setAttribute('disabled', true);
+    } else if (userGuess < randomNumber) {
+        result.textContent = 'Too low! Try again.';
+    } else {
+        result.textContent = 'Too high! Try again.';
+    }
+
+    // Provide hints after certain amount of attempts 
+    if (guesses === 3) {
+        result.textContent += ' Here\'s a hint: The number is divisible by 5.';
+    } else if (guesses === 6) {
+        result.textContent += ' Here\'s another hint: The number is odd.';
+    } else if (guesses === 9) {
+        result.textContent += ' Here\'s one more hint: The number is a prime number.';
+    }
+}
+
+
+        // this is an event listener for the enter button 
+        document.getElementById("guessField").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkGuess();
+            }
+        });
+    </script>
+</body>
+</html>
