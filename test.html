@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Finance Calculator</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="car-details-form">
+        <label for="identifier">Car Identifier (VRM):</label>
+        <input type="text" id="identifier" name="identifier" required><br>
+
+        <label for="cashPrice">Cash Price:</label>
+        <input type="number" id="cashPrice" name="cashPrice" required><br>
+
+        <label for="registrationNumber">Registration Number:</label>
+        <input type="text" id="registrationNumber" name="registrationNumber" required><br>
+
+        <label for="registrationDate">Registration Date (YYYY-MM-DD):</label>
+        <input type="date" id="registrationDate" name="registrationDate" required><br>
+
+        <label for="mileage">Mileage:</label>
+        <input type="number" id="mileage" name="mileage" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="finance-plugin-container" style="margin-top: 20px;"></div>
+
+    <script type="text/javascript" src="https://demoplugins.codeweavers.net/scripts/v1/platform/finance?ApiKey=WJK57Ue877mp08T38q"></script>
+    <script type="text/javascript">
+        document.getElementById('car-details-form').onsubmit = function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const carDetails = {
+                identifierType: 'VRM',
+                identifier: formData.get('identifier'),
+                type: 'Car',
+                isNew: false,
+                cashPrice: Number(formData.get('cashPrice')),
+                imageUrl: 'https://carwow-uk-1.imgix.net/stock-car-custom-images/original/f7f8ac3d-35d5-a42e-22f7-07f0d5ea5147?auto=format&cs=tinysrgb&fit=clip&ixlib=rb-1.1.0&q=60&w=1920',
+                linkBackUrl: '/index.html',
+                registration: {
+                    number: formData.get('registrationNumber'),
+                    date: formData.get('registrationDate'),
+                },
+                mileage: Number(formData.get('mileage')),
+            };
+
+            codeweavers.main({
+                pluginContentDivId: 'finance-plugin-container',
+                vehicle: carDetails
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Finance Calculator</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           background-color: #f2f2f2;
+           margin: 0;
+           padding: 0;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+       }
+       .container {
+           background-color: #fff;
+           border-radius: 8px;
+           box-shadow: 0 0 10px rgba(0,0,0,0.1);
+           padding: 20px;
+           width: 300px;
+       }
+       .form-group {
+           margin-bottom: 15px;
+       }
+       label {
+           display: block;
+           font-weight: bold;
+           margin-bottom: 5px;
+       }
+       input[type="text"],
+       input[type="number"],
+       input[type="null"],
+       input[type="date"] {
+           width: calc(100% - 12px);
+           padding: 8px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           box-sizing: border-box;
+           font-size: 14px;
+       }
+       button[type="submit"] {
+           background-color: #007bff;
+           border: none;
+           color: #fff;
+           padding: 10px 20px;
+           border-radius: 4px;
+           cursor: pointer;
+           font-size: 16px;
+           width: 100%;
+       }
+       button[type="submit"]:hover {
+           background-color: #0056b3;
+       }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Finance Calculator</h2>
+        <form id="car-details-form">
+            <div class="form-group">
+                <label for="identifier">Car Identifier (VRM):</label>
+                <input type="text" id="identifier" name="identifier" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cashPrice">Cash Price:</label>
+                <input type="number" id="cashPrice" name="cashPrice" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registrationNumber">Registration Number:</label>
+                <input type="text" id="registrationNumber" name="registrationNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registrationDate">Registration Date:</label>
+                <input type="date" id="registrationDate" name="registrationDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mileage">Mileage:</label>
+                <input type="number" id="mileage" name="mileage" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="finance-plugin-container" style="margin-top: 20px;"></div>
+
+    <script type="text/javascript" src="https://demoplugins.codeweavers.net/scripts/v1/platform/finance?ApiKey=WJK57Ue877mp08T38q"></script>
+    <script type="text/javascript">
+        document.getElementById('car-details-form').onsubmit = function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const carDetails = {
+                identifierType: 'VRM',
+                identifier: formData.get('identifier'),
+                type: 'Car',
+                isNew: false,
+                cashPrice: Number(formData.get('cashPrice')),
+                imageUrl: 'https://carwow-uk-1.imgix.net/stock-car-custom-images/original/f7f8ac3d-35d5-a42e-22f7-07f0d5ea5147?auto=format&cs=tinysrgb&fit=clip&ixlib=rb-1.1.0&q=60&w=1920',
+                linkBackUrl: '/index.html',
+                registration: {
+                    number: formData.get('registrationNumber'),
+                    date: formData.get('registrationDate'),
+                },
+                mileage: Number(formData.get('mileage')),
+            };
+
+            codeweavers.main({
+                pluginContentDivId: 'finance-plugin-container',
+                vehicle: carDetails
+            });
+        };
+    </script>
+</body>
+</html>

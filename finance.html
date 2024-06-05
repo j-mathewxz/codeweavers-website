@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Finance Calculator</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="finance-plugin-container"></div>
+
+    <script type="text/javascript" src="https://demoplugins.codeweavers.net/scripts/v1/platform/finance?ApiKey=WJK57Ue877mp08T38q"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+            codeweavers.main({
+                pluginContentDivId: 'finance-plugin-container',
+                vehicle: {
+                    identifierType: 'VRM',
+                    identifier: 'FP70FVB',
+                    type: 'Car',
+                    isNew: false,
+                    cashPrice: 25000,
+                    imageUrl: 'https://carwow-uk-1.imgix.net/stock-car-custom-images/original/f7f8ac3d-35d5-a42e-22f7-07f0d5ea5147?auto=format&cs=tinysrgb&fit=clip&ixlib=rb-1.1.0&q=60&w=1920',
+                    linkBackUrl: '/index.html',
+                    registration: {
+                        number: 'FP70FVB',
+                        date: '2022-01-12',
+                    },
+                    mileage: 15000,
+                }
+            });
+        }
+    </script>
+</body>
+</html>
